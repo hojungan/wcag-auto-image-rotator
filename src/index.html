@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <section id="wtm-sir-carousel" class="wtm-sir-carousel" aria-roledescription="carousel" aria-label="Image Carousel">
+        <div class="wtm-sir-carousel-inner">
+            <div class="wtm-sir-controls">
+                <button class="wtm-sir-rotation wtm-sir-pause" aria-label="Pause automatic slide show">
+                    <i class="fas fa-pause fa-lg" aria-hidden="true"></i>
+                </button>
+                <button class="wtm-sir-prev" aria-label="Previous">
+                    <i class="fa fa-arrow-left fa-lg" aria-hidden="true"></i>
+                </button>
+                <button class="wtm-sir-next" aria-label="Next">
+                    <i class="fa fa-arrow-right fa-lg" aria-hidden="true"></i>
+                </button>
+            </div>
+
+            <div class="wtm-sir-carousel-items" aria-live="off">
+                <div class="wtm-sir-carousel-item" role="group" aria-roledescription="slide" aria-label="1 of 6">
+                    <div class="wtm-sir-carousel-image">
+                        <a href="#">
+                            <img src="https://picsum.photos/900/500" alt="">
+                            <p class="wtm-sir-caption">Lorem, ipsum.</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="wtm-sir-carousel-items" aria-live="polite">
+                <div class="wtm-sir-carousel-item" role="group" aria-roledescription="slide" aria-label="2 of 6">
+                    <div class="wtm-sir-carousel-image">
+                        <a href="#">
+                            <img src="https://picsum.photos/1200/500" alt="">
+                            <p class="wtm-sir-caption">Lorem, ipsum.</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="wtm-sir-carousel-items" aria-live="polite">
+                <div class="wtm-sir-carousel-item" role="group" aria-roledescription="slide" aria-label="3 of 6">
+                    <div class="wtm-sir-carousel-image">
+                        <a href="#">
+                            <img src="https://picsum.photos/800/650" alt="">
+                            <p class="wtm-sir-caption">Lorem, ipsum.</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="wtm-sir-carousel-items" aria-live="polite">
+                <div class="wtm-sir-carousel-item" role="group" aria-roledescription="slide" aria-label="4 of 6">
+                    <div class="wtm-sir-carousel-image">
+                        <a href="#">
+                            <img src="https://picsum.photos/930/480" alt="">
+                            <p class="wtm-sir-caption">Lorem, ipsum.</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" integrity="sha512-RXf+QSDCUQs5uwRKaDoXt55jygZZm2V++WUZduaU/Ui/9EGp3f/2KZVahFZBKGH0s774sd3HmrhUy+SgOFQLVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="index.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', (e)=>{
+            var rotatorElem = document.querySelector("#wtm-sir-carousel")
+            var imageRotator = new AutoImageRotator(rotatorElem)
+            imageRotator.initiateCarousel()
+            // imageRotator.playCarousel()
+        })
+    </script>
+</body>
+</html>

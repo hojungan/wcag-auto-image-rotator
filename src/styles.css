@@ -1,0 +1,93 @@
+.wtm-sir-carousel {
+  max-width: 695px;
+  padding: 0.25rem;
+}
+
+.wtm-sir-carousel .wtm-sir-carousel-inner .wtm-sir-controls {
+  position: relative;
+  z-index: 99;
+}
+
+.wtm-sir-carousel .wtm-sir-carousel-inner .wtm-sir-controls button {
+  position: absolute;
+  top: 10px;
+  border: 0;
+  background: #000000cc;
+  padding: 0.25rem 0.75rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.wtm-sir-carousel .wtm-sir-carousel-inner .wtm-sir-controls button:hover, .wtm-sir-carousel .wtm-sir-carousel-inner .wtm-sir-controls button:focus {
+  background-color: #0000ffcc;
+}
+
+.wtm-sir-carousel .wtm-sir-carousel-inner .wtm-sir-controls button:nth-child(1) {
+  left: 10px;
+}
+
+.wtm-sir-carousel .wtm-sir-carousel-inner .wtm-sir-controls button:nth-child(2) {
+  right: 55px;
+}
+
+.wtm-sir-carousel .wtm-sir-carousel-inner .wtm-sir-controls button:nth-child(3) {
+  right: 10px;
+}
+
+.wtm-sir-carousel .wtm-sir-carousel-inner .wtm-sir-controls button svg {
+  color: #fff;
+}
+
+.wtm-sir-carousel .wtm-sir-carousel-inner .wtm-sir-carousel-items {
+  position: relative;
+}
+
+.wtm-sir-carousel .wtm-sir-carousel-inner .wtm-sir-carousel-items .wtm-sir-carousel-item {
+  position: inherit;
+  display: none;
+}
+
+.wtm-sir-carousel .wtm-sir-carousel-inner .wtm-sir-carousel-items .wtm-sir-carousel-item.wtm-sir-active {
+  display: block;
+}
+
+.wtm-sir-carousel .wtm-sir-carousel-inner .wtm-sir-carousel-items .wtm-sir-carousel-item .wtm-sir-carousel-image {
+  position: inherit;
+}
+
+.wtm-sir-carousel .wtm-sir-carousel-inner .wtm-sir-carousel-items .wtm-sir-carousel-item .wtm-sir-carousel-image a {
+  text-align: center;
+  position: inherit;
+  display: block;
+}
+
+.wtm-sir-carousel .wtm-sir-carousel-inner .wtm-sir-carousel-items .wtm-sir-carousel-item .wtm-sir-carousel-image a:hover, .wtm-sir-carousel .wtm-sir-carousel-inner .wtm-sir-carousel-items .wtm-sir-carousel-item .wtm-sir-carousel-image a:focus {
+  border: 2px solid #0000ffcc;
+  padding: 2px;
+}
+
+.wtm-sir-carousel .wtm-sir-carousel-inner .wtm-sir-carousel-items .wtm-sir-carousel-item .wtm-sir-carousel-image a img {
+  width: 100%;
+  max-height: 309px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center center;
+     object-position: center center;
+  vertical-align: middle;
+  -webkit-box-shadow: 0 5px 15px 5px #000000cc;
+          box-shadow: 0 5px 15px 5px #000000cc;
+}
+
+.wtm-sir-carousel .wtm-sir-carousel-inner .wtm-sir-carousel-items .wtm-sir-carousel-item .wtm-sir-carousel-image a .wtm-sir-caption {
+  position: absolute;
+  bottom: 10px;
+  background-color: #000000cc;
+  color: #fff;
+  padding: 0.25rem;
+  margin: 0;
+  border-radius: 5px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+/*# sourceMappingURL=styles.css.map */

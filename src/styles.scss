@@ -1,0 +1,95 @@
+$primary-dark: #000000cc;
+$primary-hover-blue: #0000ffcc;
+
+.wtm-sir-carousel {
+    max-width: 695px;
+    padding: 0.25rem;
+
+    .wtm-sir-carousel-inner {
+        .wtm-sir-controls {
+            position: relative;
+            z-index: 99;
+
+            button {
+                position: absolute;
+                top: 10px;
+                border: 0;
+                background: $primary-dark;
+                padding: 0.25rem 0.75rem;
+                border-radius: 5px;
+                cursor: pointer;
+
+                &:hover,
+                &:focus {
+                    background-color: $primary-hover-blue;
+                }
+
+                &:nth-child(1) {
+                    left: 10px;
+                }
+
+                &:nth-child(2) {
+                    right: 55px;
+                }
+
+                &:nth-child(3) {
+                    right: 10px;
+                }
+
+                & svg {
+                    color: #fff;
+                }
+            }
+        }
+
+        .wtm-sir-carousel-items {
+            position: relative;
+
+            .wtm-sir-carousel-item {
+                position: inherit;
+                display: none;
+
+                &.wtm-sir-active {
+                    display: block;
+                }
+
+                .wtm-sir-carousel-image {
+                    position: inherit;
+
+                    a {
+                        text-align: center;
+                        position: inherit;
+                        display: block;
+
+                        &:hover,
+                        &:focus {
+                            border: 2px solid $primary-hover-blue;
+                            padding: 2px;
+                        }
+
+                        img {
+                            width: 100%;
+                            max-height: 309px;
+                            object-fit: cover;
+                            object-position: center center;
+                            vertical-align: middle;
+                            box-shadow: 0 5px 15px 5px $primary-dark;
+                        }
+
+                        .wtm-sir-caption {
+                            position: absolute;
+                            bottom: 10px;
+                            background-color: $primary-dark;
+                            color: #fff;
+                            padding: 0.25rem;
+                            margin: 0;
+                            border-radius: 5px;
+                            left: 50%;
+                            transform: translateX(-50%);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
