@@ -1,89 +1,144 @@
-class AutoImageRotator {
-    constructor(node){
-        this.carousel = node
-        this.nextBtn = node.querySelector('.wtm-sir-next')
-        this.prevBtn = node.querySelector('.wtm-sir-prev')
-        this.playpause = node.querySelector('.wtm-sir-rotation.wtm-sir-pause')
-        this.carouselItems = node.querySelectorAll('.wtm-sir-carousel-item')
-        this.pauseIconClass = 'fa-pause'
-        this.playIconClass = 'fa-play'
-        this.playLabel = 'Pause automatic slide show'
-        this.pauseLabel = 'Play automatic slide show'
-        this.active = 'wtm-sir-active'
-        this.autoRotateState = null
-        this.isPlaying = true
-        this.rotateSpeed = 2000
-        this.rotateIndex = 0
+class SIRModule {
+    constructor(carouselDOMNode) {
+      this.carousel = carouselDOMNode;
+      this.nextBtn = carouselDOMNode.querySelector(".wtm-sir-next");
+      this.prevBtn = carouselDOMNode.querySelector(".wtm-sir-prev");
+      this.playpause = carouselDOMNode.querySelector(".wtm-sir-rotation.wtm-sir-pause");
+      this.carouselItems = carouselDOMNode.querySelectorAll(".wtm-sir-carousel-item");
+      this.liveRegion = carouselDOMNode.querySelector(".wtm-sir-carousel-items");
+      this.pauseIconClass = "fa-pause";
+      this.playIconClass = "fa-play";
+      this.pauseClass = "wtm-sir-pause";
+      this.playClass = "wtm-sir-play";
+      this.playLabel = "Pause automatic slide show";
+      this.pauseLabel = "Play automatic slide show";
+      this.active = "wtm-sir-active";
+      this.autoRotateState = null; // Holds reference to SetInterval
+      this.rotateSpeed = 4000; // Image roates every n seconds
+      this.rotateIndex = 0; // Current index
     }
-
+  
     initiateCarousel() {
-        // Display first item on page load
-        this.carouselItems[0].classList.add(this.active)
-
-        const buttons = this.carousel.querySelectorAll(".wtm-sir-controls button")
-        buttons.forEach(btn => {
-            btn.addEventListener('click', (e)=>{
-                e.preventDefault()
-                
-            })
-        })
-
-        // Add focus and hover event listener to each carousel item
-        for (let i = 0; i < this.carouselItems.length; i++) {
-            let anchor = this.carouselItems[i]
-
-            anchor.addEventListener('focusin', (e)=>{
-                e.preventDefault()
-                
-            })
-
-            anchor.addEventListener('focusout', (e)=>{
-                e.preventDefault()
-            })
-
-            anchor.addEventListener('mouseover', (e)=>{
-                e.preventDefault()
-                this.handleHover('mouseover', e.target)
-            })
-
-            anchor.addEventListener('mouseout', (e)=>{
-                e.preventDefault()
-            })
-        }
+      // Display first item on page load
+      this.carouselItems[0].classList.add(this.active);
+  
+      let btn = this.carousel.querySelector(
+        ".wtm-sir-carousel-inner .wtm-sir-controls .wtm-sir-rotation"
+      );
+      if (btn) {
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          this.handlePlayPauseButtonClick(this.playpause);
+        });
+      }
+  
+      // Add focus and hover event listener to each carousel item
+      for (let i = 0; i < this.carouselItems.length; i++) {
+        let anchor = this.carouselItems[i].querySelector("a");
+  
+        // Focus from Tab key
+        anchor.addEventListener("focus", (e) => {
+          e.preventDefault();
+          if(this.liveRegion.getAttribute('aria-live') === 'off' && this.playpause.classList[1].includes('pause')) {
+            this.handleLiveRegionAnnouncement('polite')
+            this.pauseCarousel()
+          }
+        });
+  
+        anchor.addEventListener("blur", (e) => {
+          e.preventDefault();
+          if(this.liveRegion.getAttribute('aria-live') === 'polite' && this.playpause.classList[1].includes('play')) {
+            this.handleLiveRegionAnnouncement('off')
+            this.playCarousel()
+          }
+        });
+  
+        anchor.addEventListener("mouseover", (e) => {
+          e.preventDefault();
+          if(this.liveRegion.getAttribute('aria-live') === 'off') {
+            this.handleLiveRegionAnnouncement('polite')
+            
+          }
+  
+        });
+  
+        anchor.addEventListener("mouseout", (e) => {
+          e.preventDefault();
+          this.handleLiveRegionAnnouncement('off')
+        });
+      }
+  
+      this.playCarousel();
     }
-
+  
     togglePlayPause(removeClass, addClass, label) {
-        // console.log(this.playpause.querySelector('svg'))
-        this.playpause.querySelector('svg').classList.remove(removeClass)
-        this.playpause.querySelector('svg').classList.add(addClass)
-        this.playpause.setAttribute('aria-label', label)
+      this.playpause.childNodes[1].classList.remove(removeClass);
+      this.playpause.childNodes[1].classList.add(addClass);
+      this.playpause.setAttribute("aria-label", label);
     }
-
+  
     goNext() {
-        this.carouselItems[this.rotateIndex].classList.remove(this.active)
-        this.rotateIndex = (this.rotateIndex + 1) % this.carouselItems.length
-        this.carouselItems[this.rotateIndex].classList.add(this.active)
+      this.carouselItems[this.rotateIndex].classList.remove(this.active);
+      this.rotateIndex = (this.rotateIndex + 1) % this.carouselItems.length;
+      this.carouselItems[this.rotateIndex].classList.add(this.active);
     }
-
+  
     goPrev() {
-        this.carouselItems[this.rotateIndex].classList.remove(this.active)
-        this.rotateIndex = (this.rotateIndex - 1 + this.carouselItems.length) % this.carouselItems.length
-        this.carouselItems[this.rotateIndex].classList.add(this.active)
+      this.carouselItems[this.rotateIndex].classList.remove(this.active);
+      this.rotateIndex =
+        (this.rotateIndex - 1 + this.carouselItems.length) %
+        this.carouselItems.length;
+      this.carouselItems[this.rotateIndex].classList.add(this.active);
     }
-
+  
     playCarousel() {
-        this.isPlaying = true
-        this.autoRotateState = setInterval(()=>{
-            this.goNext()
-        }, this.rotateSpeed);
+      this.handleLiveRegionAnnouncement('off')
+  
+      this.autoRotateState = setInterval(() => {
+        this.goNext();
+      }, this.rotateSpeed);
     }
-
+  
     pauseCarousel() {
-        this.isPlaying = false
-        clearInterval(this.autoRotateState)
+      this.handleLiveRegionAnnouncement('polite')
+      clearInterval(this.autoRotateState);
     }
-
-    handleHover(hoverType, elem) {
-        // console.log(elem)
+  
+  
+    handleFocus(focusType, elem) {
+      console.log(elem)
     }
-}
+  
+    handlePlayPauseButtonClick(playBtn) {
+      switch (playBtn.classList[1]) {
+        case this.pauseClass:
+          // Carousel is playing now. Pause it
+          this.togglePlayPause(
+            this.pauseIconClass,
+            this.playIconClass,
+            this.pauseLabel
+          );
+          this.pauseCarousel();
+          playBtn.classList.remove(this.pauseClass)
+          playBtn.classList.add(this.playClass)
+          break;
+  
+        case this.playClass:
+          // Carousel is paused. Play it
+          this.togglePlayPause(
+            this.playIconClass,
+            this.pauseIconClass,
+            this.playLabel
+          );
+          this.playCarousel();
+          playBtn.classList.remove(this.playClass)
+          playBtn.classList.add(this.pauseClass)
+          break;
+      }
+    }
+  
+    handleLiveRegionAnnouncement(method) {
+      this.liveRegion.setAttribute("aria-live", method);
+    }
+  }
+  
