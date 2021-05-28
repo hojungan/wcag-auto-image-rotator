@@ -1,0 +1,1 @@
+# wcag-auto-image-rotator
