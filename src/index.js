@@ -13,14 +13,19 @@ class SIRModule {
     this.pauseIcon = 'fa-pause'
 
     this.domNode = domNode
-    this.pauseBtn = domNode.querySelector('.wtm-sir-rotation')
-    this.liveRegion = domNode.querySelector('.wtm-sir-carousel-items')
-    this.carouselItems = domNode.querySelectorAll('.wtm-sir-carousel-item')
-    this.buttons = domNode.querySelectorAll('.wtm-sir-controls button')
+    this.pauseBtn = null
+    this.liveRegion = null
+    this.carouselItems = null
+    this.buttons = null
   }
 
 
   init() {
+    this.pauseBtn = this.domNode.querySelector('.wtm-sir-rotation')
+    this.liveRegion = this.domNode.querySelector('.wtm-sir-carousel-items')
+    this.carouselItems = this.domNode.querySelectorAll('.wtm-sir-carousel-item')
+    this.buttons = this.domNode.querySelectorAll('.wtm-sir-controls button')
+    
     this.carouselItems[0].classList.add('wtm-sir-active')
 
     for (let i = 0; i < this.buttons.length; i++) {
@@ -40,23 +45,26 @@ class SIRModule {
           btn.addEventListener('click', this.goBack.bind(this))
         }
 
-        btn.addEventListener('focus', this.handleFocus.bind(this))
-        btn.addEventListener('blur', this.handleBlur.bind(this))
-
+        btn.addEventListener('focus', this.focus.bind(this))
+        btn.addEventListener('blur', this.blur.bind(this))
+        btn.addEventListener('mouseover', this.mouseover.bind(this))
+        btn.addEventListener('mouseout', this.mouseout.bind(this))
       }
     }
 
+    // Add event listener on each carousel item
     for (let j = 0; j < this.carouselItems.length; j++) {
-      let elem = this.carouselItems[j]
+      let elem = this.carouselItems[j].querySelector('a')
 
-      // elem.addEventListener('focus', this.handleFocus.bind(this))
-      // elem.addEventListener('blur', this.handleBlur.bind(this))
+      elem.addEventListener('focus', this.focus.bind(this))
+      elem.addEventListener('blur', this.blur.bind(this))
+      elem.addEventListener('mouseover', this.mouseover.bind(this))
+      elem.addEventListener('mouseout', this.mouseout.bind(this))
     }
 
-    this.domNode.addEventListener('mouseover', this.handleFocus.bind(this))
-    this.domNode.addEventListener('mouseout', this.handleBlur.bind(this))
 
-    setTimeout(this.playCarousel.bind(this),)
+    // Start the carousel
+    this.playCarousel()
   }
 
   goNext() {
@@ -98,15 +106,38 @@ class SIRModule {
   }
 
   // Event Handlers
-  handleFocus(e) {
-    if (!this.pauseBtn.contains(e.target) && this.rotationState == null) {
+  mouseover(e) {
+    if(!this.pauseBtn.contains(e.target)) {
       this.hasHover = true
-      this.pauseCarousel()
+
+      if(!this.hasFocus){  
+        this.pauseCarousel()
+      }
     }
   }
 
-  handleBlur(e) {
+  mouseout() {
     this.hasHover = false
-    this.playCarousel()
+    if(!this.hasFocus) {
+      this.playCarousel()
+    }
+  }
+
+  focus(e) {
+    if(!this.pauseBtn.contains(e.target)){
+
+      this.hasFocus = true
+
+      if(!this.hasHover) {
+        this.pauseCarousel()
+      }
+    }
+  }
+
+  blur() {
+    this.hasFocus = false
+    if(!this.hasHover) {
+      this.playCarousel()
+    }
   }
 }

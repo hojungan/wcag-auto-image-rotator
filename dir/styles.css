@@ -12,14 +12,23 @@
   position: absolute;
   top: 10px;
   border: 0;
-  background: #000000cc;
+  background: rgba(0, 0, 0, 0.8);
   padding: 0.25rem 0.75rem;
   border-radius: 5px;
   cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .wtm-sir-carousel .wtm-sir-carousel-inner .wtm-sir-controls button:hover, .wtm-sir-carousel .wtm-sir-carousel-inner .wtm-sir-controls button:focus {
-  background-color: #0000ffcc;
+  background-color: rgba(0, 0, 255, 0.8);
 }
 
 .wtm-sir-carousel .wtm-sir-carousel-inner .wtm-sir-controls button:nth-child(1) {
@@ -36,6 +45,7 @@
 
 .wtm-sir-carousel .wtm-sir-carousel-inner .wtm-sir-controls button svg {
   color: #fff;
+  font-size: larger;
 }
 
 .wtm-sir-carousel .wtm-sir-carousel-inner .wtm-sir-carousel-items {
@@ -62,7 +72,7 @@
 }
 
 .wtm-sir-carousel .wtm-sir-carousel-inner .wtm-sir-carousel-items .wtm-sir-carousel-item .wtm-sir-carousel-image a:hover, .wtm-sir-carousel .wtm-sir-carousel-inner .wtm-sir-carousel-items .wtm-sir-carousel-item .wtm-sir-carousel-image a:focus {
-  border: 2px solid #0000ffcc;
+  border: 2px solid rgba(0, 0, 255, 0.8);
   padding: 2px;
 }
 
@@ -74,14 +84,12 @@
   -o-object-position: center center;
      object-position: center center;
   vertical-align: middle;
-  -webkit-box-shadow: 0 5px 15px 5px #000000cc;
-          box-shadow: 0 5px 15px 5px #000000cc;
 }
 
 .wtm-sir-carousel .wtm-sir-carousel-inner .wtm-sir-carousel-items .wtm-sir-carousel-item .wtm-sir-carousel-image a .wtm-sir-caption {
   position: absolute;
   bottom: 10px;
-  background-color: #000000cc;
+  background-color: rgba(0, 0, 0, 0.8);
   color: #fff;
   padding: 0.25rem;
   margin: 0;

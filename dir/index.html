@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <h1>Gallery</h1>
+
     <section id="wtm-sir-carousel" class="wtm-sir-carousel" aria-roledescription="carousel" aria-label="Image Carousel">
         <div class="wtm-sir-carousel-inner">
             <div class="wtm-sir-controls">
@@ -27,38 +29,48 @@
                 <div class="wtm-sir-carousel-item" role="group" aria-roledescription="slide" aria-label="1 of 6">
                     <div class="wtm-sir-carousel-image">
                         <a href="#">
-                            <img src="https://picsum.photos/900/500" alt="">
-                            <p class="wtm-sir-caption">Lorem, ipsum.</p>
+                            <img src="./img/img1.jpg" alt="Lake view with Fuji mountain in the distance">
+                            <p class="wtm-sir-caption">Fuji mountain</p>
                         </a>
                     </div>
                 </div>
-            </div>
-            <div class="wtm-sir-carousel-items" aria-live="polite">
                 <div class="wtm-sir-carousel-item" role="group" aria-roledescription="slide" aria-label="2 of 6">
                     <div class="wtm-sir-carousel-image">
                         <a href="#">
-                            <img src="https://picsum.photos/1200/500" alt="">
-                            <p class="wtm-sir-caption">Lorem, ipsum.</p>
+                            <img src="./img/img2.jpg" alt="Painting of girl sitting on a swing hung on tree branch">
+                            <p class="wtm-sir-caption">Swing in the forest</p>
                         </a>
                     </div>
                 </div>
-            </div>
-            <div class="wtm-sir-carousel-items" aria-live="polite">
                 <div class="wtm-sir-carousel-item" role="group" aria-roledescription="slide" aria-label="3 of 6">
                     <div class="wtm-sir-carousel-image">
                         <a href="#">
-                            <img src="https://picsum.photos/800/650" alt="">
-                            <p class="wtm-sir-caption">Lorem, ipsum.</p>
+                            <img src="./img/img3.jpg" alt="">
+                            <p class="wtm-sir-caption">Collision Course</p>
                         </a>
                     </div>
                 </div>
-            </div>
-            <div class="wtm-sir-carousel-items" aria-live="polite">
                 <div class="wtm-sir-carousel-item" role="group" aria-roledescription="slide" aria-label="4 of 6">
                     <div class="wtm-sir-carousel-image">
                         <a href="#">
-                            <img src="https://picsum.photos/930/480" alt="">
-                            <p class="wtm-sir-caption">Lorem, ipsum.</p>
+                            <img src="./img/img4.jpg" alt="">
+                            <p class="wtm-sir-caption">Baby Hedgehog</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="wtm-sir-carousel-item" role="group" aria-roledescription="slide" aria-label="5 of 6">
+                    <div class="wtm-sir-carousel-image">
+                        <a href="#">
+                            <img src="./img/img5.jpg" alt="">
+                            <p class="wtm-sir-caption">Reading illustration</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="wtm-sir-carousel-item" role="group" aria-roledescription="slide" aria-label="6 of 6">
+                    <div class="wtm-sir-carousel-image">
+                        <a href="#">
+                            <img src="./img/img6.jpg" alt="">
+                            <p class="wtm-sir-caption">Wings of unknown</p>
                         </a>
                     </div>
                 </div>
@@ -66,13 +78,12 @@
         </div>
     </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" integrity="sha512-RXf+QSDCUQs5uwRKaDoXt55jygZZm2V++WUZduaU/Ui/9EGp3f/2KZVahFZBKGH0s774sd3HmrhUy+SgOFQLVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="index.js" defer></script>
+    <script src="index.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', (e)=>{
             var rotatorElem = document.querySelector("#wtm-sir-carousel")
-            var imageRotator = new AutoImageRotator(rotatorElem)
-            imageRotator.initiateCarousel()
-            // imageRotator.playCarousel()
+            var imageRotator = new SIRModule(rotatorElem)
+            imageRotator.init()
         })
     </script>
 </body>
