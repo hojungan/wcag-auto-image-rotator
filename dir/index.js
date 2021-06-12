@@ -13,7 +13,7 @@ var SIRModule = /*#__PURE__*/function () {
     this.isPlaying = true;
     this.hasFocus = false;
     this.hasHover = false;
-    this.speed = 2500;
+    this.speed = 5000;
     this.currentIndex = 0;
     this.rotationState = null;
     this.playLabel = 'Pause automatic slide show';
@@ -32,16 +32,16 @@ var SIRModule = /*#__PURE__*/function () {
     value: function init() {
       var _this = this;
 
-      this.pauseBtn = this.domNode.querySelector('.wtm-sir-rotation');
-      this.liveRegion = this.domNode.querySelector('.wtm-sir-carousel-items');
-      this.carouselItems = this.domNode.querySelectorAll('.wtm-sir-carousel-item');
-      this.buttons = this.domNode.querySelectorAll('.wtm-sir-controls button');
-      this.carouselItems[0].classList.add('wtm-sir-active');
+      this.pauseBtn = this.domNode.querySelector('.wcag-rotation');
+      this.liveRegion = this.domNode.querySelector('.wcag-carousel-items');
+      this.carouselItems = this.domNode.querySelectorAll('.wcag-carousel-item');
+      this.buttons = this.domNode.querySelectorAll('.wcag-controls button');
+      this.carouselItems[0].classList.add('wcag-active');
 
       for (var i = 0; i < this.buttons.length; i++) {
         var btn = this.buttons[i];
 
-        if (btn.classList.contains('wtm-sir-rotation')) {
+        if (btn.classList.contains('wcag-rotation')) {
           btn.addEventListener('click', function (e) {
             _this.togglePauseIcon();
 
@@ -49,7 +49,7 @@ var SIRModule = /*#__PURE__*/function () {
             _this.isPlaying ? _this.playCarousel() : _this.pauseCarousel();
           });
         } else {
-          if (btn.classList.contains('wtm-sir-next')) {
+          if (btn.classList.contains('wcag-next')) {
             btn.addEventListener('click', this.goNext.bind(this));
           } else {
             btn.addEventListener('click', this.goBack.bind(this));
@@ -77,16 +77,16 @@ var SIRModule = /*#__PURE__*/function () {
   }, {
     key: "goNext",
     value: function goNext() {
-      this.carouselItems[this.currentIndex].classList.remove('wtm-sir-active');
+      this.carouselItems[this.currentIndex].classList.remove('wcag-active');
       this.currentIndex = (this.currentIndex + 1) % this.carouselItems.length;
-      this.carouselItems[this.currentIndex].classList.add('wtm-sir-active');
+      this.carouselItems[this.currentIndex].classList.add('wcag-active');
     }
   }, {
     key: "goBack",
     value: function goBack() {
-      this.carouselItems[this.currentIndex].classList.remove('wtm-sir-active');
+      this.carouselItems[this.currentIndex].classList.remove('wcag-active');
       this.currentIndex = (this.currentIndex - 1 + this.carouselItems.length) % this.carouselItems.length;
-      this.carouselItems[this.currentIndex].classList.add('wtm-sir-active');
+      this.carouselItems[this.currentIndex].classList.add('wcag-active');
     }
   }, {
     key: "playCarousel",
@@ -105,7 +105,7 @@ var SIRModule = /*#__PURE__*/function () {
   }, {
     key: "togglePauseIcon",
     value: function togglePauseIcon() {
-      var svg = this.domNode.querySelector('.wtm-sir-rotation .fa-lg');
+      var svg = this.domNode.querySelector('.wcag-rotation .fa-lg');
 
       if (this.isPlaying) {
         svg.classList.remove(this.pauseIcon);

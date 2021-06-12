@@ -9,68 +9,67 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Gallery</h1>
-
-    <section id="wtm-sir-carousel" class="wtm-sir-carousel" aria-roledescription="carousel" aria-label="Image Carousel">
-        <div class="wtm-sir-carousel-inner">
-            <div class="wtm-sir-controls">
-                <button class="wtm-sir-rotation wtm-sir-pause" aria-label="Pause automatic slide show">
+    <h1>Accessible Auto-Rotating Image Gallery</h1>
+    <section id="wcag-carousel" class="wcag-carousel" aria-roledescription="carousel" aria-label="Image Carousel">
+        <div class="wcag-carousel-inner">
+            <div class="wcag-controls">
+                <button class="wcag-rotation wcag-pause" aria-label="Pause automatic slide show">
                     <i class="fas fa-pause fa-lg" aria-hidden="true"></i>
                 </button>
-                <button class="wtm-sir-prev" aria-label="Previous">
+                <button class="wcag-prev" aria-label="Previous">
                     <i class="fa fa-arrow-left fa-lg" aria-hidden="true"></i>
                 </button>
-                <button class="wtm-sir-next" aria-label="Next">
+                <button class="wcag-next" aria-label="Next">
                     <i class="fa fa-arrow-right fa-lg" aria-hidden="true"></i>
                 </button>
             </div>
 
-            <div class="wtm-sir-carousel-items" aria-live="off">
-                <div class="wtm-sir-carousel-item" role="group" aria-roledescription="slide" aria-label="1 of 6">
-                    <div class="wtm-sir-carousel-image">
+            <div class="wcag-carousel-items" aria-live="off">
+                <div class="wcag-carousel-item" role="group" aria-roledescription="slide" aria-label="1 of 6">
+                    <div class="wcag-carousel-image">
                         <a href="#">
                             <img src="./img/img1.jpg" alt="Lake view with Fuji mountain in the distance">
-                            <p class="wtm-sir-caption">Fuji mountain</p>
+                            <p class="wcag-caption">Fuji mountain</p>
                         </a>
                     </div>
                 </div>
-                <div class="wtm-sir-carousel-item" role="group" aria-roledescription="slide" aria-label="2 of 6">
-                    <div class="wtm-sir-carousel-image">
+                <div class="wcag-carousel-item" role="group" aria-roledescription="slide" aria-label="2 of 6">
+                    <div class="wcag-carousel-image">
                         <a href="#">
                             <img src="./img/img2.jpg" alt="Painting of girl sitting on a swing hung on tree branch">
-                            <p class="wtm-sir-caption">Swing in the forest</p>
+                            <p class="wcag-caption">Swing in the forest</p>
                         </a>
                     </div>
                 </div>
-                <div class="wtm-sir-carousel-item" role="group" aria-roledescription="slide" aria-label="3 of 6">
-                    <div class="wtm-sir-carousel-image">
+                <div class="wcag-carousel-item" role="group" aria-roledescription="slide" aria-label="3 of 6">
+                    <div class="wcag-carousel-image">
                         <a href="#">
                             <img src="./img/img3.jpg" alt="">
-                            <p class="wtm-sir-caption">Collision Course</p>
+                            <p class="wcag-caption">Collision Course</p>
                         </a>
                     </div>
                 </div>
-                <div class="wtm-sir-carousel-item" role="group" aria-roledescription="slide" aria-label="4 of 6">
-                    <div class="wtm-sir-carousel-image">
+                <div class="wcag-carousel-item" role="group" aria-roledescription="slide" aria-label="4 of 6">
+                    <div class="wcag-carousel-image">
                         <a href="#">
                             <img src="./img/img4.jpg" alt="">
-                            <p class="wtm-sir-caption">Baby Hedgehog</p>
+                            <p class="wcag-caption">Baby Hedgehog</p>
                         </a>
                     </div>
                 </div>
-                <div class="wtm-sir-carousel-item" role="group" aria-roledescription="slide" aria-label="5 of 6">
-                    <div class="wtm-sir-carousel-image">
+                <div class="wcag-carousel-item" role="group" aria-roledescription="slide" aria-label="5 of 6">
+                    <div class="wcag-carousel-image">
                         <a href="#">
                             <img src="./img/img5.jpg" alt="">
-                            <p class="wtm-sir-caption">Reading illustration</p>
+                            <p class="wcag-caption">Reading illustration</p>
                         </a>
                     </div>
                 </div>
-                <div class="wtm-sir-carousel-item" role="group" aria-roledescription="slide" aria-label="6 of 6">
-                    <div class="wtm-sir-carousel-image">
+                <div class="wcag-carousel-item" role="group" aria-roledescription="slide" aria-label="6 of 6">
+                    <div class="wcag-carousel-image">
                         <a href="#">
                             <img src="./img/img6.jpg" alt="">
-                            <p class="wtm-sir-caption">Wings of unknown</p>
+                            <p class="wcag-caption">Wings of unknown</p>
                         </a>
                     </div>
                 </div>
@@ -81,7 +80,7 @@
     <script src="index.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', (e)=>{
-            var rotatorElem = document.querySelector("#wtm-sir-carousel")
+            var rotatorElem = document.querySelector("#wcag-carousel")
             var imageRotator = new SIRModule(rotatorElem)
             imageRotator.init()
         })
