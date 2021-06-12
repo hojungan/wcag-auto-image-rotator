@@ -3,7 +3,7 @@ class SIRModule {
     this.isPlaying = true
     this.hasFocus = false
     this.hasHover = false
-    this.speed = 2500
+    this.speed = 5000
     this.currentIndex = 0
     this.rotationState = null
 
@@ -21,17 +21,17 @@ class SIRModule {
 
 
   init() {
-    this.pauseBtn = this.domNode.querySelector('.wtm-sir-rotation')
-    this.liveRegion = this.domNode.querySelector('.wtm-sir-carousel-items')
-    this.carouselItems = this.domNode.querySelectorAll('.wtm-sir-carousel-item')
-    this.buttons = this.domNode.querySelectorAll('.wtm-sir-controls button')
+    this.pauseBtn = this.domNode.querySelector('.wcag-rotation')
+    this.liveRegion = this.domNode.querySelector('.wcag-carousel-items')
+    this.carouselItems = this.domNode.querySelectorAll('.wcag-carousel-item')
+    this.buttons = this.domNode.querySelectorAll('.wcag-controls button')
     
-    this.carouselItems[0].classList.add('wtm-sir-active')
+    this.carouselItems[0].classList.add('wcag-active')
 
     for (let i = 0; i < this.buttons.length; i++) {
       let btn = this.buttons[i]
 
-      if (btn.classList.contains('wtm-sir-rotation')) {
+      if (btn.classList.contains('wcag-rotation')) {
         btn.addEventListener('click', (e) => {
           this.togglePauseIcon()
           this.isPlaying = !this.isPlaying
@@ -39,7 +39,7 @@ class SIRModule {
         })
 
       } else {
-        if (btn.classList.contains('wtm-sir-next')) {
+        if (btn.classList.contains('wcag-next')) {
           btn.addEventListener('click', this.goNext.bind(this))
         } else {
           btn.addEventListener('click', this.goBack.bind(this))
@@ -68,15 +68,15 @@ class SIRModule {
   }
 
   goNext() {
-    this.carouselItems[this.currentIndex].classList.remove('wtm-sir-active')
+    this.carouselItems[this.currentIndex].classList.remove('wcag-active')
     this.currentIndex = (this.currentIndex + 1) % this.carouselItems.length
-    this.carouselItems[this.currentIndex].classList.add('wtm-sir-active')
+    this.carouselItems[this.currentIndex].classList.add('wcag-active')
   }
 
   goBack() {
-    this.carouselItems[this.currentIndex].classList.remove('wtm-sir-active')
+    this.carouselItems[this.currentIndex].classList.remove('wcag-active')
     this.currentIndex = (this.currentIndex - 1 + this.carouselItems.length) % this.carouselItems.length
-    this.carouselItems[this.currentIndex].classList.add('wtm-sir-active')
+    this.carouselItems[this.currentIndex].classList.add('wcag-active')
   }
 
   playCarousel() {
@@ -92,7 +92,7 @@ class SIRModule {
   }
 
   togglePauseIcon() {
-    let svg = this.domNode.querySelector('.wtm-sir-rotation .fa-lg')
+    let svg = this.domNode.querySelector('.wcag-rotation .fa-lg')
     if (this.isPlaying) {
       svg.classList.remove(this.pauseIcon)
       svg.classList.add(this.playIcon)
