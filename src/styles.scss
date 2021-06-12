@@ -14,13 +14,19 @@ $box-shadow: #26394d 0px 20px 30px -10px;
 body {
   height: 100vh;
   font-size: 10px;
+  font-family: "Baloo Tammudu 2", cursive;
 }
 
 h1 {
-  margin-top: 3rem;
+  margin-top: 3em;
   text-align: center;
-  font-family: "Baloo Tammudu 2", cursive;
-  font-size: 2rem;
+  font-size: 4.5em;
+}
+
+p {
+  font-size: 2em;
+  text-align: center;
+  line-height: 1.6em;
 }
 
 .wcag-carousel {
