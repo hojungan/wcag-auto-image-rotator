@@ -38,10 +38,11 @@ header {
 }
 
 .wcag-carousel {
-  width: 55rem;
+  max-width: 55rem;
   padding: 1rem;
   margin: 5em auto;
   box-shadow: 0 0 7rem 0.5rem #26394d inset, 0 0 7rem 1rem #26394d inset;
+  overflow: hidden; // to hide shadow gradients overflowing
 
   .wcag-carousel-inner {
     height: $gallery-height;
@@ -132,4 +133,16 @@ header {
       }
     }
   }
+}
+
+footer {
+ text-align: center; 
+ background: #131313;
+ padding: 3rem 0;
+ 
+ p {
+   font-size: 2rem;
+   color: #fff;
+   font-family: cursive;
+ }
 }
